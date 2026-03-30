@@ -4,12 +4,13 @@ import java.util.Scanner;
 
 import components.Game;
 import components.Move;
+import components.Result;
 
 public class Program {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println();
+        int wins = 0;
         System.out.println("=== ROCK PAPER AND SCISSORS ===");
         char tryAgain = 'y';
 
@@ -31,14 +32,22 @@ public class Program {
             System.out.println("You chose " + playerMove);
             Move computerMove = Move.randomMove();
             System.out.println("The computer chose " + computerMove);
+        
+            Result result = Game.play(playerMove, computerMove);
 
             System.out.println();
-            System.out.println("Result: " + Game.play(playerMove, computerMove));
+            System.out.println("Result: " + result);
+
+            if (result == Result.WIN) {
+                wins++;
+            }
 
             System.out.println();
             System.out.print("Do you want to try again (y/n)? ");
             tryAgain = sc.nextLine().toLowerCase().charAt(0);
         } while (tryAgain != 'n');
+
+        System.out.println("You won " + wins + " games");
 
         sc.close();
     }

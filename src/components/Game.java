@@ -6,7 +6,7 @@ public class Game {
             return Result.DRAW;
         } 
         else if (
-            (playerMove == Move.ROCK && computerMove.equals(Move.SCISSORS)) ||
+            (playerMove == Move.ROCK && computerMove == Move.SCISSORS) ||
             (playerMove == Move.PAPER && computerMove == Move.ROCK) ||
             (playerMove == Move.SCISSORS && computerMove == Move.PAPER)
         ) {
